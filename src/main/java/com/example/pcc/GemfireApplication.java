@@ -78,10 +78,11 @@ interface OrderRepository extends CrudRepository<Order, Long> {
 interface LineItemRepository extends CrudRepository<LineItem, Long> {
 }
 
-@Data
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Region("Order")
+@Data
 class Order implements Serializable {
 
   @Id
@@ -94,10 +95,11 @@ class Order implements Serializable {
   private List<LineItem> lineItems;
 }
 
-@Region("LineItem")
-@Data
+
 @AllArgsConstructor
 @NoArgsConstructor
+@Region("LineItem")
+@Data
 class LineItem implements Serializable {
 
   @Indexed
