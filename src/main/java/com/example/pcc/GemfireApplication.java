@@ -42,11 +42,11 @@ import org.springframework.data.gemfire.mapping.annotation.Indexed;
 import org.springframework.data.gemfire.mapping.annotation.Region;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.session.data.gemfire.config.annotation.web.http.EnableGemFireHttpSession;
-import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import lombok.AllArgsConstructor;
@@ -199,7 +199,7 @@ class ShoppingCart implements Serializable {
 
 
 @Log
-@Controller
+@RestController
 @SessionAttributes("cart")
 class CartSessionController {
 
@@ -212,10 +212,11 @@ class CartSessionController {
   }
 
   @GetMapping("/orders")
-  String orders(@ModelAttribute("cart") ShoppingCart cart,
+  Collection<Order> orders(@ModelAttribute("cart") ShoppingCart cart,
                 Model model) {
     cart.addOrder(new Order(ids.incrementAndGet(), new Date(), Collections.emptyList()));
     model.addAttribute("orders", cart.getOrders());
-    return "orders";
+//    return "orders";
+    return cart.getOrders();
   }
 }

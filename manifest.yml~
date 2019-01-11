@@ -1,5 +1,5 @@
 applications:
 - name: spring-tips-pcc
-  buildpack: java_buildpack_offline
+  buildpacks: java_buildpack_offline
   services:
   - spring-tips-pcc
