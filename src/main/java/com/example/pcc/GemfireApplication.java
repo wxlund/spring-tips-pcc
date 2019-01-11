@@ -186,7 +186,7 @@ class LineItem implements Serializable {
 @NoArgsConstructor
 class ShoppingCart implements Serializable {
 
-  private final Collection<Order> orders = new ArrayList<>();
+  private Collection<Order> orders = new ArrayList<>();
 
   public void addOrder(Order order) {
     this.orders.add(order);
