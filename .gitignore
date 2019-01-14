@@ -15,10 +15,10 @@
 *.dmg
 *.gz
 *.iso
-#*.jar
+*.jar
 *.rar
 *.tar
-#*.zip
+*.zip
 
 # Logs and databases #
 ######################
@@ -51,3 +51,7 @@ Thumbs.db
 ######################
 .mvn
 target
+
+# Emacs Temp Files #
+####################
+**~
